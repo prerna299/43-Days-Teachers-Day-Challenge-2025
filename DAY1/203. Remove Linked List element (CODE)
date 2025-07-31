@@ -1,0 +1,21 @@
+class Solution {
+    public ListNode removeElements(ListNode head, int val) {
+        // Create a dummy node to handle edge cases easily
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode current = dummy;
+
+        // Traverse the list
+        while (current.next != null) {
+            if (current.next.val == val) {
+                // Skip the node with the target value
+                current.next = current.next.next;
+            } else {
+                current = current.next;
+            }
+        }
+
+        // Return the new head (dummy.next)
+        return dummy.next;
+    }
+}
