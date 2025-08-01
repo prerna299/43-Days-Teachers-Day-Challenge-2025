@@ -1,0 +1,27 @@
+import java.util.Scanner;
+ 
+public class NextRound {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        int n = sc.nextInt(); // number of participants
+        int k = sc.nextInt(); // k-th position
+ 
+        int[] scores = new int[n];
+ 
+        for (int i = 0; i < n; i++) {
+            scores[i] = sc.nextInt();
+        }
+ 
+        int threshold = scores[k - 1]; // score of the k-th place (1-based to 0-based)
+ 
+        int count = 0;
+        for (int i = 0; i < n; i++) {
+            if (scores[i] >= threshold && scores[i] > 0) {
+                count++;
+            }
+        }
+ 
+        System.out.println(count);
+    }
+}
