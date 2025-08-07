@@ -1,0 +1,26 @@
+import java.util.Scanner;
+ 
+public class Dubstep {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String remix = sc.nextLine();
+ 
+        // Replace all occurrences of "WUB" with a space
+        String replaced = remix.replaceAll("WUB", " ");
+ 
+        // Split the string into words and remove extra spaces
+        String[] words = replaced.trim().split("\\s+");
+ 
+        // Join the words back with a single space between them
+        StringBuilder original = new StringBuilder();
+        for (int i = 0; i < words.length; i++) {
+            original.append(words[i]);
+            if (i < words.length - 1) {
+                original.append(" ");
+            }
+        }
+ 
+        // Print the result
+        System.out.println(original.toString());
+    }
+}
