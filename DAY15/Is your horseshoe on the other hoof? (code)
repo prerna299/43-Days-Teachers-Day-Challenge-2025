@@ -1,0 +1,16 @@
+import java.util.*;
+
+public class Horseshoe {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Read the 4 horseshoe colors
+        Set<Integer> colors = new HashSet<>();
+        for (int i = 0; i < 4; i++) {
+            colors.add(sc.nextInt());
+        }
+
+        // If there are x unique colors, Valera needs (4 - x) more shoes
+        System.out.println(4 - colors.size());
+    }
+}
