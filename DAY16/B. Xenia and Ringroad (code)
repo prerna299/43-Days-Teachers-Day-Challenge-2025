@@ -1,0 +1,30 @@
+import java.util.*;
+ 
+public class XeniaAndRingroad {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+ 
+        int n = sc.nextInt(); // number of houses
+        int m = sc.nextInt(); // number of tasks
+ 
+        long time = 0; // total time
+        int currentHouse = 1; // starting at house 1
+ 
+        for (int i = 0; i < m; i++) {
+            int targetHouse = sc.nextInt();
+ 
+            if (targetHouse >= currentHouse) {
+                // move forward without looping
+                time += targetHouse - currentHouse;
+            } else {
+                // need to loop around the ringroad
+                time += (n - currentHouse) + targetHouse;
+            }
+ 
+            currentHouse = targetHouse; // update position
+        }
+ 
+        System.out.println(time);
+    }
+}
+ 
