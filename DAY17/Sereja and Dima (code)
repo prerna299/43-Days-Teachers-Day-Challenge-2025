@@ -1,0 +1,39 @@
+import java.util.*;
+
+public class SerejaAndDima {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        int n = sc.nextInt(); // number of cards
+        int[] cards = new int[n];
+        
+        for (int i = 0; i < n; i++) {
+            cards[i] = sc.nextInt();
+        }
+        
+        int sereja = 0, dima = 0;
+        int left = 0, right = n - 1;
+        boolean turnSereja = true; // Sereja starts first
+        
+        while (left <= right) {
+            int chosenCard;
+            if (cards[left] > cards[right]) {
+                chosenCard = cards[left];
+                left++;
+            } else {
+                chosenCard = cards[right];
+                right--;
+            }
+            
+            if (turnSereja) {
+                sereja += chosenCard;
+            } else {
+                dima += chosenCard;
+            }
+            
+            turnSereja = !turnSereja; // switch turn
+        }
+        
+        System.out.println(sereja + " " + dima);
+    }
+}
