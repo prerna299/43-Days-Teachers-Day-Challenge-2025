@@ -1,0 +1,20 @@
+import java.util.*;
+
+public class NightAtTheMuseum {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String word = sc.nextLine();
+
+        char current = 'a'; // wheel starts at 'a'
+        int totalMoves = 0;
+
+        for (char ch : word.toCharArray()) {
+            int clockwise = Math.abs(ch - current);      // distance going forward
+            int counterClockwise = 26 - clockwise;       // distance going backward
+            totalMoves += Math.min(clockwise, counterClockwise);
+            current = ch; // move pointer
+        }
+
+        System.out.println(totalMoves);
+    }
+}
