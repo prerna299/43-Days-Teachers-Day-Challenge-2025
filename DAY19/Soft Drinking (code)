@@ -1,0 +1,28 @@
+import java.util.*;
+
+public class SoftDrinking {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();  // number of friends
+        int k = sc.nextInt();  // number of bottles
+        int l = sc.nextInt();  // milliliters per bottle
+        int c = sc.nextInt();  // number of limes
+        int d = sc.nextInt();  // slices per lime
+        int p = sc.nextInt();  // grams of salt
+        int nl = sc.nextInt(); // ml per toast per friend
+        int np = sc.nextInt(); // grams of salt per toast per friend
+
+        // Total milliliters of drink
+        int totalDrink = k * l;
+        // Total lime slices
+        int totalLimes = c * d;
+
+        // Toasts possible from drink
+        int toastsFromDrink = totalDrink / nl;
+        // Toasts possible from limes
+        int toastsFromLimes = totalLimes;
+        // Toasts possible from salt
+        int toastsFromSalt = p / np;
+
+        // Find minimum possible toasts a
