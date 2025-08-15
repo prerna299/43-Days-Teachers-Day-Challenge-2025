@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class ValeraAndPlates {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt(); // number of days
+        int m = sc.nextInt(); // clean bowls
+        int k = sc.nextInt(); // clean plates
+
+        int washes = 0;
+
+        for (int i = 0; i < n; i++) {
+            int dishType = sc.nextInt();
+
+            if (dishType == 1) { // needs a bowl
+                if (m > 0) {
+                    m--;
+                } else {
+                    washes++;
+                }
+            } else { // type 2 dish, can use plate or bowl
+                if (k > 0) {
+                    k--;
+                } else if (m > 0) {
+                    m--;
+                } else {
+                    washes++;
+                }
+            }
+        }
+
+        System.out.println(washes);
+        sc.close();
+    }
+}
