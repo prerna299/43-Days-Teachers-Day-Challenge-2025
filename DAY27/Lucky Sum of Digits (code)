@@ -1,0 +1,28 @@
+import java.util.*;
+
+public class LuckySumOfDigits {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+
+        String result = null;
+
+        for (int y = 0; y <= n / 7; y++) {
+            int remaining = n - 7 * y;
+            if (remaining >= 0 && remaining % 4 == 0) {
+                int x = remaining / 4;
+                String candidate = "4".repeat(x) + "7".repeat(y);
+                if (result == null || candidate.length() < result.length() 
+                    || (candidate.length() == result.length() && candidate.compareTo(result) < 0)) {
+                    result = candidate;
+                }
+            }
+        }
+
+        if (result == null) {
+            System.out.println(-1);
+        } else {
+            System.out.println(result);
+        }
+    }
+}
