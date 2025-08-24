@@ -1,0 +1,36 @@
+import java.util.*;
+
+public class RegistrationSystem {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        sc.nextLine(); // consume newline
+
+        HashMap<String, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < n; i++) {
+            String name = sc.nextLine();
+
+            if (!map.containsKey(name)) {
+                // New name → register directly
+                map.put(name, 0);
+                System.out.println("OK");
+            } else {
+                // Already exists → suggest new one
+                int count = map.get(name) + 1;
+                map.put(name, count);
+
+                String newName = name + count;
+                while (map.containsKey(newName)) {
+                    count++;
+                    map.put(name, count);
+                    newName = name + count;
+                }
+
+                map.put(newName, 0); // register new name
+                System.out.println(newName);
+            }
+        }
+        sc.close();
+    }
+}
