@@ -1,0 +1,60 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+    static class Segment implements Comparable<Segment> {
+        int l, r;
+        public Segment(int l, int r) {
+            this.l = l;
+            this.r = r;
+        }
+        public int length() {
+            return r - l + 1;
+        }
+        @Override
+        public int compareTo(Segment other) {
+            int len1 = this.length();
+            int len2 = other.length();
+            if (len1 == len2) {
+                return this.l - other.l; // leftmost first
+            }
+            return len2 - len1; // longer first
+        }
+    }
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+
+        int t = Integer.parseInt(br.readLine());
+        while (t-- > 0) {
+            int n = Integer.parseInt(br.readLine());
+            int[] a = new int[n + 1];
+
+            PriorityQueue<Segment> pq = new PriorityQueue<>();
+            pq.add(new Segment(1, n));
+
+            for (int i = 1; i <= n; i++) {
+                Segment seg = pq.poll();
+                int l = seg.l, r = seg.r;
+                int mid;
+                if ((r - l + 1) % 2 == 1) {
+                    mid = (l + r) / 2;
+                } else {
+                    mid = (l + r - 1) / 2;
+                }
+                a[mid] = i;
+
+                if (l <= mid - 1) pq.add(new Segment(l, mid - 1));
+                if (mid + 1 <= r) pq.add(new Segment(mid + 1, r));
+            }
+
+            for (int i = 1; i <= n; i++) {
+                sb.append(a[i]).append(" ");
+            }
+            sb.append("\n");
+        }
+
+        System.out.print(sb);
+    }
+}
