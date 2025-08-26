@@ -1,0 +1,21 @@
+import java.util.*;
+
+public class GravityFlip {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        int n = sc.nextInt(); // number of columns
+        int[] cubes = new int[n];
+        
+        for (int i = 0; i < n; i++) {
+            cubes[i] = sc.nextInt();
+        }
+        
+        Arrays.sort(cubes); // simulate gravity flip (sort ascending)
+        
+        for (int i = 0; i < n; i++) {
+            System.out.print(cubes[i]);
+            if (i < n - 1) System.out.print(" ");
+        }
+    }
+}
