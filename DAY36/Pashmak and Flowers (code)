@@ -1,0 +1,37 @@
+import java.util.*;
+ 
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        int n = sc.nextInt();
+        long[] flowers = new long[n];
+        
+        for (int i = 0; i < n; i++) {
+            flowers[i] = sc.nextLong();
+        }
+        
+        long minVal = Arrays.stream(flowers).min().getAsLong();
+        long maxVal = Arrays.stream(flowers).max().getAsLong();
+        
+        long diff = maxVal - minVal;
+        
+        // count frequency of min and max
+        long countMin = 0, countMax = 0;
+        for (long f : flowers) {
+            if (f == minVal) countMin++;
+            if (f == maxVal) countMax++;
+        }
+        
+        long ways;
+        if (diff == 0) {
+            // all flowers same
+            ways = (long) n * (n - 1) / 2;
+        } else {
+            ways = countMin * countMax;
+        }
+        
+        System.out.println(diff + " " + ways);
+    }
+}
+ 
