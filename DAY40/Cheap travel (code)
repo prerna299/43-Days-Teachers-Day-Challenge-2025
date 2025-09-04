@@ -1,0 +1,28 @@
+import java.util.*;
+ 
+public class CheapTravel {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        int n = sc.nextInt(); // total rides Ann needs
+        int m = sc.nextInt(); // rides covered by special ticket
+        int a = sc.nextInt(); // price of single ticket
+        int b = sc.nextInt(); // price of m-ride ticket
+        
+        // Option 1: All single tickets
+        int costAllSingle = n * a;
+ 
+        // Option 2: Full m-ride tickets + remaining rides as single tickets
+        int fullPackages = n / m;
+        int remainingRides = n % m;
+        int costMix = fullPackages * b + remainingRides * a;
+ 
+        // Option 3: Full m-ride tickets + buy one more m-ride ticket for remaining rides
+        int costExtraPackage = (fullPackages + 1) * b;
+ 
+        // Minimum cost among the three options
+        int minCost = Math.min(costAllSingle, Math.min(costMix, costExtraPackage));
+        
+        System.out.println(minCost);
+    }
+}
